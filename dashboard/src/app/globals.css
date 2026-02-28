@@ -1,0 +1,17 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background: #0a0a0f;
+  color: #e4e4e7;
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 8px #00e5a033; }
+  50% { box-shadow: 0 0 20px #00e5a055; }
+}
+
+.glow-pulse {
+  animation: pulse-glow 3s ease-in-out infinite;
+}
