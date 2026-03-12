@@ -53,7 +53,7 @@ export async function getJupiterQuote(
   if (!res.ok) {
     throw new Error(`Jupiter quote failed: ${res.status} ${await res.text()}`);
   }
-  return res.json();
+  return (await res.json()) as JupiterQuote;
 }
 
 export async function getJupiterSwapIx(
@@ -75,7 +75,7 @@ export async function getJupiterSwapIx(
   if (!res.ok) {
     throw new Error(`Jupiter swap failed: ${res.status} ${await res.text()}`);
   }
-  return res.json();
+  return (await res.json()) as JupiterSwapResponse;
 }
 
 /**

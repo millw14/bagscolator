@@ -25,7 +25,7 @@ async function main() {
     new Wallet(cfg.keeper),
     { commitment: "confirmed" }
   );
-  const program = new Program(idl as any, cfg.programId, provider);
+  const program = new Program(idl as any, provider);
 
   let consecutiveErrors = 0;
 
