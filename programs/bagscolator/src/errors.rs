@@ -31,4 +31,7 @@ pub enum BagscolatorError {
 
     #[msg("WSOL account address does not match expected ATA")]
     InvalidWsolAccount,
+
+    #[msg("Provided Jupiter program ID is invalid")]
+    InvalidJupiterProgram,
 }

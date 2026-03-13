@@ -49,7 +49,7 @@ pub struct ExecuteBuyback<'info> {
     pub lock_vault_token_account: Account<'info, TokenAccount>,
 
     /// CHECK: Jupiter v6 program — address validated at call-site by the keeper
-    /// constructing the correct route.  Remaining accounts carry the full
+    /// constructing the correct route. Remaining accounts carry the full
     /// Jupiter route account set.
     pub jupiter_program: UncheckedAccount<'info>,
 
@@ -67,6 +67,12 @@ pub fn handler<'info>(
 
     // ── gate checks ──────────────────────────────────────────────────
     require!(config.is_active, BagscolatorError::ProgramNotActive);
+
+    require_keys_eq!(
+        ctx.accounts.jupiter_program.key(),
+        crate::constants::JUPITER_V6_PROGRAM_ID,
+        BagscolatorError::InvalidJupiterProgram
+    );
 
     let vault_lamports = ctx.accounts.fee_vault.lamports();
     require!(
